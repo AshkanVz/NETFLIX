@@ -1,11 +1,13 @@
 import React from "react";
 import Main from "../components/Main";
+import Navbar from "../components/Navbar";
 import Row from "../components/Row";
 import requests from "../Requests";
 
 const Home = () => {
   return (
     <div className="bg-black">
+      <Navbar/>
       <Main />
       <Row rowID="1" title="UpComing" fetchURL={requests.requestUpcoming} />
       <Row rowID="2" title="Popular" fetchURL={requests.requestPopular} />
