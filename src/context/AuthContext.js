@@ -19,6 +19,14 @@ const AuthContextProvider = ({children}) => {
           savedShows: []
       })
     }
+
+    function logIn(email, password) {
+        return signInWithEmailAndPassword(auth, email, password);
+      }
+    
+      function logOut() {
+        return signOut(auth);
+      }
   
 
 
@@ -32,7 +40,7 @@ const AuthContextProvider = ({children}) => {
       });
 
     return (
-        <AuthContext.Provider value={{ signUp, user }}>
+        <AuthContext.Provider value={{ signUp, user , logIn , logOut }}>
       {children}
     </AuthContext.Provider>
     );
