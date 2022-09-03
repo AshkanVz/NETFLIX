@@ -1,33 +1,34 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Movie from "./Movie";
-const Row = ({ title, fetchURL, rowID }) => {
-  const [movies, setMovies] = useState([]);
-  const [show, setShow] = useState(true)
-  useEffect(() => {
-      axios.get(fetchURL).then((response) => {
-      setMovies(response.data.results);
-    });
-  }, [fetchURL]);
 
-  const slideLeft = () => {
-    var slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft = slider.scrollLeft - 500;
-  };
-  const slideRight = () => {
-    var slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft = slider.scrollLeft + 500;
-  };
+const Singlerow = ({ title, fetchURL, rowID }) => {
+    const [movies, setMovies] = useState([]);
+    const [show, setShow] = useState(true)
+    useEffect(() => {
+        axios.get(fetchURL).then((response) => {
+        setMovies(response.data.results);
+      });
+    }, [fetchURL]);
   
-  const showhandler = () =>{
-    setShow(!show)
-  }
-  return (
-    <div className="bg-slate-800/60 mb-3 shadow-md shadow-slate-700 rounded-xl mx-3 cursor-pointer ">
-    <div className="  " onClick={showhandler}>
-    <h2 className="text-white font-bold md:text-xl p-4 hover:text-2xl hover:text-slate-600 transition-all duration-150 ">{title}</h2>
+    const slideLeft = () => {
+      var slider = document.getElementById("slider" + rowID);
+      slider.scrollLeft = slider.scrollLeft - 500;
+    };
+    const slideRight = () => {
+      var slider = document.getElementById("slider" + rowID);
+      slider.scrollLeft = slider.scrollLeft + 500;
+    };
+    
+    const showhandler = () =>{
+      setShow(!show)
+    }
+    
+    return (
+        <div>
+            <div className="" onClick={showhandler}>
+    <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
     </div>
       
       <div className={`relative ${show  ? "flex" : "hidden"} items-center group`}>
@@ -50,8 +51,8 @@ const Row = ({ title, fetchURL, rowID }) => {
           size={40}
         />
       </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default Row;
+export default Singlerow;

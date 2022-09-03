@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Main from "../components/Main";
 import Navbar from "../components/Navbar";
 import Row from "../components/Row";
@@ -9,12 +9,16 @@ import toast, { Toaster } from "react-hot-toast";
 import { MdOutlineClose } from "react-icons/md";
 import { HiLightningBolt } from "react-icons/hi";
 import styles from "./Login.module.css";
+import Singlerow from "../components/Singlerow";
+import Modale from "../components/Modale";
 
 
 const Home = () => {
+  const [show, setShow] = useState(true);
   const {user} = UserAuth();
   
-  {user && toast.custom(
+  
+  {user && (toast.custom(
     (t) => (
       <div
         className={classNames([
@@ -37,12 +41,14 @@ const Home = () => {
       </div>
     ),
     { id: "unique-notification", position: "top-center" }
-  ); }
+  )) }
   return (
     <div className="bg-black">
-    <Toaster/>
+      <Modale show={show} setShow={setShow}/> 
+      {user && (<Toaster/>)}
+    
       <Main />
-      <Row rowID="1" title="UpComing" fetchURL={requests.requestUpcoming} />
+      <Singlerow rowID="1" title="UpComing" fetchURL={requests.requestUpcoming} />
       <Row rowID="2" title="Popular" fetchURL={requests.requestPopular} />
       <Row rowID="3" title="Trending" fetchURL={requests.requestTrending} />
       <Row rowID="4" title="Top Rated" fetchURL={requests.requestTopRated} />
