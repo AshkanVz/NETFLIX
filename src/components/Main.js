@@ -2,7 +2,7 @@ import React, { useEffect, useState ,useRef } from 'react';
 import axios from 'axios';
 import requests from '../Requests';
 import { Rerousel } from 'rerousel';
-
+import lacasa from "../images/lacasa.jpg"
 const Main = () => {
     const [movies, setMovies] = useState([]);
     const movie = movies[Math.floor(Math.random() * movies.length)];
@@ -39,10 +39,10 @@ const truncateString = (str, num) => {
         
             <img
             className='w-full h-full object-cover'
-            src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+            src={lacasa}
             alt={movie?.title}
           />
-         
+         {/*{`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}*/}
         
         <div className='absolute w-full top-[20%] p-4 md:p-8'>
           <h1 className='text-3xl md:text-5xl font-bold'>{movie?.title}</h1>

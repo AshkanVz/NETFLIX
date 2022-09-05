@@ -21,7 +21,32 @@ const Login = () => {
       setError('')
       try {
         await logIn(email, password)
-        
+        setTimeout(() => {
+         toast.custom(
+            (t) => (
+              <div
+                className={classNames([
+                  styles.successnotif,
+                  t.visible ? "top-0" : "-top-96",
+                ])}
+              >
+                <div className={styles.iconWrapper}>
+                  <HiLightningBolt />
+                </div>
+                <div className={styles.contentWrapper}>
+                  <h1>Seuccess</h1>
+                  <p>
+                    Signin successfully !!
+                  </p>
+                </div>
+                <div className={styles.closeIcon} onClick={() => toast.dismiss(t.id)}>
+                  <MdOutlineClose />
+                </div>
+              </div>
+            ),
+            { id: "unique-notification", position: "top-center" }
+          )
+        }, 3000);
         navigate('/')
       } catch (error) {
         console.log(error);

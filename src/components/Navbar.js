@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
-
+import netflix from "../images/netflix.png"
 const Navbar = () => {
   const { user, logOut } = UserAuth();
   
@@ -23,14 +23,8 @@ const Navbar = () => {
     <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
        
       <Link to='/'>
-      <h1 className="text-red-600 hover:text-red-500 text-4xl font-bold cursor-pointer flex  gap-x-0.5  " onClick={navigatee}>
-        <span className="text-5xl">N</span>
-        <span className="text-4xl">E</span>
-        <span className="text-3xl">T</span>
-        <span className="text-2xl">F</span>
-        <span className="text-3xl">L</span>
-        <span className="text-4xl">I</span>
-        <span className="text-5xl">X</span>
+      <h1 className="text-red-600 hover:text-red-500 cursor-pointer    " onClick={navigatee}>
+       <img src={netflix} className="w-30 h-10 " alt="" />
       </h1>
       </Link>
       

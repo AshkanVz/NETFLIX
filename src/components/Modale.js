@@ -4,6 +4,7 @@ const Modale = ({show , setShow}) => {
    
     const closeModal = () => {
         setShow(false);
+       
     }
     return (
         <div>
