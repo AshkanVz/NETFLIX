@@ -53,7 +53,7 @@ const Home = () => {
   )) }
   return (
     <div className="bg-black">
-      <Modale show={show} setShow={setShow}/> 
+      {/*<Modale show={show} setShow={setShow}/> */}
       {user && (<Toaster/>)}
     
       <Main />
